@@ -1,0 +1,35 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+<div class="container">
+<br>
+<h1>New Task</h1>
+<br>
+
+    <!-- Content here -->
+
+    <form method="post">
+
+        <br>
+        <div class="form-group">
+            <label for="task">Task:</label>
+            {% if current_task %}
+            <input type="text" class="form-control" id="task" name="task"
+                   value="{{ current_task.task }}">
+            {% else %}
+            <input type="text" class="form-control" id="task" name="task"
+                   placeholder="example - Take out the trash">
+            {% endif %}
+        </div>
+
+        <br/>
+        <div align="center">
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> &nbsp;
+                Save
+            </button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

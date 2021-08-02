@@ -1,0 +1,44 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+<div class="container">
+<br>
+<h1>To-do</h1>
+<br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">created at</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in list %}
+        <tr>
+            <th scope="row">{{ item.id }}</th>
+            <td>{{ item.task }}</td>
+            <td>{{ item.date.day }}/{{ item.date.month }}/{{ item.date.year }}</td>
+            <td>
+
+                <a type="button" class="close" href="{{url_for('routes.edit_task',id=item.id)}}">
+                    <i class="bi bi-pencil-square"></i>
+
+                </a>
+                &nbsp; &nbsp;
+                <a type="button" class="close" href="{{url_for('routes.delete_task',id=item.id)}}">
+                    <i class="bi bi-trash-fill"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div align="center">
+        <a class="btn btn-primary" href="{{url_for('routes.new_task')}}" role="button">Add Item</a>
+    </div>
+</div>
+
+{% endblock %}
